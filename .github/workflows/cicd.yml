@@ -8,7 +8,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: clone the code
+            - name: Clone the code
               uses: actions/checkout@v4
             - name: Build image
               run:
@@ -17,7 +17,7 @@ jobs:
               uses: docker/login-action@v3
               with:
                 username: donatienkt
-                password: $({secrets.docker_pass})
+                password: ${{secrets.docker_pass}}
             - name: push image
               run:
                 docker push donatienkt/cicd-portfolio
