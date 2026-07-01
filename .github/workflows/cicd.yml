@@ -20,7 +20,7 @@ jobs:
                 password: $({secrets.docker_pass})
             - name: push image
               run:
-                docker push docnatienkt/cicd-portfolio
+                docker push donatienkt/cicd-portfolio
 
             
 
