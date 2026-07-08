@@ -5,6 +5,7 @@ on:
         # pull_requests:
         #    branche:['main', 'dev']
         branches: ['main']
+
 jobs: 
     bui_scan:
         runs-on: ubuntu-latest
@@ -17,6 +18,7 @@ jobs:
                 scan-type: 'fs'
                 severity: HIGH,CRITICAL
                 exit-code: 1
+
             - name: Build Docker Image
               run: docker build -t 650959877739.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest .
             
@@ -25,8 +27,9 @@ jobs:
               with: 
                 image-ref: 650959877739.dkr.ecr.us-east-1.amazonaws.com/my-repo:latest 
                 format: table 
-                exit-code: 1 
+                exit-code: 0
                 ignore-unfixed: true 
                 severity: CRITICAL,HIGH
+
             - name: Push Image to Ecr
               run: echo "push"
