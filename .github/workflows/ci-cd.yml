@@ -57,5 +57,11 @@ jobs:
                 aws-region: us-east-1
                 role-to-assume: ${{ secrets.AWS_ARN }}
                 
-            - name: Deploy to Ecs
-              run: echo "Deplo to ecs"
+            - name: Deploy to Amazon ECS
+              uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+              with:
+                task-definition: task-def.json
+                service: my-app-service
+                cluster: resume_cluster
+                wait-for-service-stability: true
+                
